@@ -1,0 +1,14 @@
+PODS:
+  - Redux (0.1.0)
+
+DEPENDENCIES:
+  - Redux (from `../`)
+
+EXTERNAL SOURCES:
+  Redux:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Redux: efffc8f4ca2a733a0273a6868ac74daa2ab27b00
+
+COCOAPODS: 0.38.2
