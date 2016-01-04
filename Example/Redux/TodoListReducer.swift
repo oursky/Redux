@@ -13,21 +13,21 @@ struct TodoListState: AnyEquatable, Equatable {
     var list: [TodoListItem]
 }
 
-func ==(lhs: TodoListState, rhs: TodoListState) -> Bool {
+func == (lhs: TodoListState, rhs: TodoListState) -> Bool {
     return lhs.list == rhs.list
 }
 
 
 func todoListReducer(previousState: Any, action: ReduxAction) -> Any {
     var state = previousState as! TodoListState
-    
+
     print("action: ", action)
-    
+
     switch action.payload {
     case TodoListAction.LoadSuccess(let list):
         state.list = list
         break
-        
+
     case TodoListAction.Add(let token, let content):
         state.list.append(
             TodoListItem(
@@ -41,7 +41,7 @@ func todoListReducer(previousState: Any, action: ReduxAction) -> Any {
             item in
             item.token == token ?
                 TodoListItem(content: item.content, createdAt: createdAt) :
-                item
+            item
         }
         break
     case TodoListAction.AddFail(let token):
@@ -49,7 +49,7 @@ func todoListReducer(previousState: Any, action: ReduxAction) -> Any {
             item in item.token != token
         }
         break
-        
+
     default:
         break
     }

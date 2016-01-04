@@ -8,47 +8,52 @@
 
 import Foundation
 
-public func createStore(reducer: Reducer, initialState: AnyEquatable) -> ReduxStore {
-    var currentReducer = reducer;
-    var currentState = initialState;
-    var listeners = [Listener]();
-    var isDispatching = false;
+public func createStore(
+    reducer: Reducer,
+    initialState: AnyEquatable
+) -> ReduxStore {
+    var currentReducer = reducer
+    var currentState = initialState
+    var listeners = [Listener]()
+    var isDispatching = false
 
     func getState() -> ReduxState {
-        return currentState;
+        return currentState
     }
 
     func subscribe(listener: Listener) -> () -> Void {
-        listeners.append(listener);
-        let index = listeners.count - 1;
-        var isSubscribed = true;
+        listeners.append(listener)
+        let index = listeners.count - 1
+        var isSubscribed = true
 
         func unsubscribe() {
-            if (!isSubscribed) {
-                return;
+            if !isSubscribed {
+                return
             }
 
-            isSubscribed = false;
-            _ = listeners.removeAtIndex(index);
+            isSubscribed = false
+            _ = listeners.removeAtIndex(index)
         }
-        return unsubscribe;
+        return unsubscribe
     }
 
     func dispatch(action: ReduxAction) -> ReduxAction {
-        if (isDispatching) {
+        if isDispatching {
             /*
-                Using fatalError you do not need try/catch in every dispatch. Yeah!
+                Using fatalError you do not need try/catch in every dispatch.
             */
             fatalError("Cannot dispatch in a middle of dispatch")
         }
 
         defer {
-            isDispatching = false;
+            isDispatching = false
         }
 
-        isDispatching = true;
-        let nextState = currentReducer(previousState: currentState, action: action);
-        
+        isDispatching = true
+        let nextState = currentReducer(
+            previousState: currentState,
+            action: action
+        )
         if let ns = nextState as? AnyEquatable {
             currentState = ns
         }
@@ -57,16 +62,21 @@ public func createStore(reducer: Reducer, initialState: AnyEquatable) -> ReduxSt
             listener()
         }
 
-        return action;
+        return action
     }
 
     func replaceReducer(nextReducer: Reducer) -> Void {
-        currentReducer = nextReducer;
+        currentReducer = nextReducer
 
         dispatch(ReduxAction(payload: ActionTypes.Init))
     }
 
     dispatch(ReduxAction(payload: ActionTypes.Init))
 
-    return ReduxStore(dispatch: dispatch, getState: getState, replaceReducer: replaceReducer, subscribe: subscribe);
+    return ReduxStore(
+        dispatch: dispatch,
+        getState: getState,
+        replaceReducer: replaceReducer,
+        subscribe: subscribe
+    )
 }

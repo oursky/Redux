@@ -14,18 +14,20 @@ public func combineReducers(reducers: [String: Reducer]) -> Reducer {
             var nextState: ReduxAppState = appState
             for (key, reducer) in reducers {
                 if let previousStateForKey = nextState.get(key) {
-                    let nextStateForKey = reducer(previousState: previousStateForKey, action: action);
+                    let nextStateForKey = reducer(
+                        previousState: previousStateForKey,
+                        action: action
+                    )
                     if let ns = nextStateForKey as? AnyEquatable {
-                        nextState.set(key, value: ns);
+                        nextState.set(key, value: ns)
                     } else {
                         print("AppState value must conform AnyEquatable")
                     }
                 }
             }
-            return nextState;
+            return nextState
         }
-        
-        return previousState;
+        return previousState
     }
-    return combination;
+    return combination
 }

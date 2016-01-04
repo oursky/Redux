@@ -8,7 +8,7 @@
 
 public protocol StoreType {
     static var appStore: ReduxStore { get }
-    
+
     static func configureStore() -> ReduxStore
 }
 
@@ -18,12 +18,11 @@ private struct StoreContainer {
 
 public extension StoreType {
     static var appStore: ReduxStore {
-        
+
         if StoreContainer.store == nil {
             StoreContainer.store = configureStore()
         }
-        
+
         return StoreContainer.store!
-        
     }
 }
