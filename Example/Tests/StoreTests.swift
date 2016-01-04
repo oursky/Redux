@@ -42,6 +42,12 @@ class StoreTests: XCTestCase {
         XCTAssert((store?.getListState().list)! != [ "bye" ])
     }
     
+    func testDispatchWithinDispatch() {
+        expectFatalError {
+            self.store?.dispatch(action: ReduxAction(payload: CounterAction.DispatchWithinDispatch(self.store!)))
+        }
+    }
+    
     func testSubcribe() {
         let expectation = self.expectationWithDescription("subscribed action")
         

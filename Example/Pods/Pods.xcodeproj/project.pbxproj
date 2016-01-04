@@ -12,6 +12,7 @@
 		5AE590FA746540A08076690F643D2B89 /* Redux.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C40063DEF4593C496EE5CF5674F8F93 /* Redux.bundle */; };
 		6CDB6E51EA026F0834C0E2AB7E210FF2 /* Redux-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F817D8011D637987FC5A93DDE8D10B /* Redux-dummy.m */; };
 		833CF28B196B47770B3DEFB092A8B71A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C602D1B9B2C5157241DEFCFC885C2B /* Foundation.framework */; };
+		A9057A171C3A5FEA00117DC8 /* ProgrammerAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9057A151C3A5F6D00117DC8 /* ProgrammerAssertions.swift */; settings = {ASSET_TAGS = (); }; };
 		A963AE341C3A184100B36C50 /* combineReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE2D1C3A184100B36C50 /* combineReducers.swift */; settings = {ASSET_TAGS = (); }; };
 		A963AE351C3A184100B36C50 /* createStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE2E1C3A184100B36C50 /* createStore.swift */; settings = {ASSET_TAGS = (); }; };
 		A963AE371C3A184100B36C50 /* StoreConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE301C3A184100B36C50 /* StoreConnector.swift */; settings = {ASSET_TAGS = (); }; };
@@ -71,6 +72,7 @@
 		8B5A020BE249981652D971254A185E19 /* Pods-Redux_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Redux_Tests-resources.sh"; sourceTree = "<group>"; };
 		912DDCCE9AAAAF7AA2BF2D7648BE4737 /* Redux.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Redux.xcconfig; sourceTree = "<group>"; };
 		A6F817D8011D637987FC5A93DDE8D10B /* Redux-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Redux-dummy.m"; sourceTree = "<group>"; };
+		A9057A151C3A5F6D00117DC8 /* ProgrammerAssertions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammerAssertions.swift; sourceTree = "<group>"; };
 		A963AE2D1C3A184100B36C50 /* combineReducers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = combineReducers.swift; sourceTree = "<group>"; };
 		A963AE2E1C3A184100B36C50 /* createStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = createStore.swift; sourceTree = "<group>"; };
 		A963AE301C3A184100B36C50 /* StoreConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreConnector.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				A963AE301C3A184100B36C50 /* StoreConnector.swift */,
 				A963AE311C3A184100B36C50 /* StoreType.swift */,
 				A963AE321C3A184100B36C50 /* types.swift */,
+				A9057A151C3A5F6D00117DC8 /* ProgrammerAssertions.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				A963AE391C3A184100B36C50 /* types.swift in Sources */,
 				A963AE371C3A184100B36C50 /* StoreConnector.swift in Sources */,
 				A963AE381C3A184100B36C50 /* StoreType.swift in Sources */,
+				A9057A171C3A5FEA00117DC8 /* ProgrammerAssertions.swift in Sources */,
 				A963AE341C3A184100B36C50 /* combineReducers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,6 +604,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EB4F558CF8B834FB911D9C1EE06BDE51 /* Pods-Redux_Example.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -688,6 +693,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 268EE0A2B991BD87F83D140C272A5D15 /* Pods-Redux_Example.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

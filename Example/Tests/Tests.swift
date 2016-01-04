@@ -20,6 +20,7 @@ struct CounterActionCreators {
 enum CounterAction : ReduxActionType {
     case Decrement
     case Increment
+    case DispatchWithinDispatch(ReduxStore)
 }
 
 
@@ -40,6 +41,9 @@ func counterReducer(previousState: Any, action: ReduxAction) -> Any {
         break
     case CounterAction.Decrement:
         counterState.count = counterState.count - 1
+        break
+    case CounterAction.DispatchWithinDispatch(let store):
+        store.dispatch(action: ReduxAction(payload: CounterAction.Increment))
         break
     default:
         break

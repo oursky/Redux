@@ -13,6 +13,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		958B2F784743EA04424A1AD8 /* Pods_Redux_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C80791CFDA5A86CADDD676 /* Pods_Redux_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		A9057A141C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9057A131C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift */; settings = {ASSET_TAGS = (); }; };
 		A963AE1C1C3A169000B36C50 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE171C3A169000B36C50 /* AppState.swift */; settings = {ASSET_TAGS = (); }; };
 		A963AE1D1C3A169000B36C50 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE181C3A169000B36C50 /* Store.swift */; settings = {ASSET_TAGS = (); }; };
 		A963AE1E1C3A169000B36C50 /* TodoListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE191C3A169000B36C50 /* TodoListAction.swift */; settings = {ASSET_TAGS = (); }; };
@@ -50,6 +51,7 @@
 		69C80791CFDA5A86CADDD676 /* Pods_Redux_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Redux_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C1C9F35B74376D73FAEE16 /* Pods-Redux_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redux_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Redux_Tests/Pods-Redux_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A509117D9AE7B98459DD9B12 /* Pods-Redux_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redux_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Redux_Example/Pods-Redux_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		A9057A131C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+ProgrammerAssertions.swift"; sourceTree = "<group>"; };
 		A963AE171C3A169000B36C50 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A963AE181C3A169000B36C50 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		A963AE191C3A169000B36C50 /* TodoListAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListAction.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				A963AE251C3A17AD00B36C50 /* StoreConnectorTests.swift */,
 				A963AE261C3A17AD00B36C50 /* StoreTests.swift */,
 				A963AE271C3A17AD00B36C50 /* Tests.swift */,
+				A9057A131C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -422,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A963AE281C3A17AD00B36C50 /* ReducerTests.swift in Sources */,
+				A9057A141C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift in Sources */,
 				A963AE2B1C3A17AD00B36C50 /* Tests.swift in Sources */,
 				A963AE291C3A17AD00B36C50 /* StoreConnectorTests.swift in Sources */,
 				A963AE2A1C3A17AD00B36C50 /* StoreTests.swift in Sources */,

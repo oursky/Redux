@@ -24,7 +24,7 @@ class MockViewController: UIViewController, StoreDelegate {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        Swift.fatalError("init(coder:) has not been implemented")
     }
     
     func connectRedux(store: ReduxStore, keys: [String]) {
