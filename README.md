@@ -1,6 +1,6 @@
 # Redux
 
-[![CI Status](http://img.shields.io/travis/Steven-Chan/Redux.svg?style=flat)](https://travis-ci.org/Steven-Chan/Redux)
+[![CI Status](http://img.shields.io/travis/oursky/Redux.svg?style=flat)](https://travis-ci.org/oursky/Redux)
 [![Version](https://img.shields.io/cocoapods/v/Redux.svg?style=flat)](http://cocoapods.org/pods/Redux)
 [![License](https://img.shields.io/cocoapods/l/Redux.svg?style=flat)](http://cocoapods.org/pods/Redux)
 [![Platform](https://img.shields.io/cocoapods/p/Redux.svg?style=flat)](http://cocoapods.org/pods/Redux)
