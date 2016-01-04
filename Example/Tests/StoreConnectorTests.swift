@@ -1,5 +1,5 @@
 //
-//  UIViewControllerReduxTests.swift
+//  StoreConnectorTests.swift
 //  SwiftRedux
 //
 //  Created by Steven Chan on 30/12/15.
@@ -50,7 +50,7 @@ class MockViewController: UIViewController, StoreDelegate {
 
 
 
-class UIViewControllerReduxTests: XCTestCase {
+class StoreConnectorTests: XCTestCase {
     
     var vc: MockViewController?
     var store: ReduxStore?
