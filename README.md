@@ -1,6 +1,7 @@
 # Redux
 
 [![CI Status](http://img.shields.io/travis/oursky/Redux.svg?style=flat)](https://travis-ci.org/oursky/Redux)
+[![codecov.io](https://codecov.io/github/oursky/Redux/coverage.svg?branch=master)](https://codecov.io/github/oursky/Redux?branch=master)
 [![Version](https://img.shields.io/cocoapods/v/Redux.svg?style=flat)](http://cocoapods.org/pods/Redux)
 [![License](https://img.shields.io/cocoapods/l/Redux.svg?style=flat)](http://cocoapods.org/pods/Redux)
 [![Platform](https://img.shields.io/cocoapods/p/Redux.svg?style=flat)](http://cocoapods.org/pods/Redux)
