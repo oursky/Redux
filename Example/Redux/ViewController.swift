@@ -37,7 +37,10 @@ class ViewController: UIViewController, StoreDelegate {
             delegate: self
         )
 
-        TodoListActionCreators.load()
+        TodoListActionCreators.load(
+            Store.appStore.dispatch,
+            userDefaults: NSUserDefaults.standardUserDefaults()
+        )
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -51,7 +54,11 @@ class ViewController: UIViewController, StoreDelegate {
     }
 
     @IBAction func enterDidPress(sender: UIButton) {
-        TodoListActionCreators.add(textField.text!)
+        TodoListActionCreators.add(
+            textField.text!,
+            dispatch: Store.appStore.dispatch,
+            userDefaults: NSUserDefaults.standardUserDefaults()
+        )
         textField.text = ""
     }
 

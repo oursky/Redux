@@ -10,7 +10,7 @@ import Redux
 
 let kTodoListUserDefaultsKey = "SwiftRedux.example.TodoList"
 
-enum TodoListAction: ReduxActionType {
+public enum TodoListAction: ReduxActionType {
     case Load
     case LoadSuccess(list: [TodoListItem])
     case LoadFail
@@ -21,14 +21,16 @@ enum TodoListAction: ReduxActionType {
 }
 
 
-struct TodoListActionCreators {
+public struct TodoListActionCreators {
 
-    static func load() {
-        Store.appStore.dispatch(
+    static func load(
+        dispatch: DispatchFunction,
+        userDefaults: NSUserDefaults
+    ) {
+        dispatch(
             action: ReduxAction(payload: TodoListAction.Load)
         )
 
-        let userDefaults = NSUserDefaults.standardUserDefaults()
         let list = userDefaults
             .arrayForKey(kTodoListUserDefaultsKey) ?? [AnyObject]()
 
@@ -40,7 +42,7 @@ struct TodoListActionCreators {
 
         // need some time to load
         delay(1.0) {
-            Store.appStore.dispatch(
+            dispatch(
                 action: ReduxAction(
                     payload: TodoListAction.LoadSuccess(list: itemList)
                 )
@@ -48,9 +50,13 @@ struct TodoListActionCreators {
         }
     }
 
-    static func add(content: String) {
+    static func add(
+        content: String,
+        dispatch: DispatchFunction,
+        userDefaults: NSUserDefaults
+    ) {
         let token = NSUUID().UUIDString
-        Store.appStore.dispatch(
+        dispatch(
             action: ReduxAction(
                 payload: TodoListAction.Add(token: token, content: content)
             )
@@ -59,7 +65,6 @@ struct TodoListActionCreators {
         let createdAt = NSDate()
         let newItem = TodoListItem(content: content, createdAt: createdAt)
 
-        let userDefaults = NSUserDefaults.standardUserDefaults()
         var list = userDefaults
             .arrayForKey(kTodoListUserDefaultsKey) ?? [AnyObject]()
 
@@ -68,7 +73,7 @@ struct TodoListActionCreators {
         userDefaults.setObject(list, forKey: kTodoListUserDefaultsKey)
         userDefaults.synchronize()
 
-        Store.appStore.dispatch(
+        dispatch(
             action: ReduxAction(
                 payload: TodoListAction.AddSuccess(
                     token: token,

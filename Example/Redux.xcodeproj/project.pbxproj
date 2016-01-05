@@ -23,6 +23,8 @@
 		A963AE291C3A17AD00B36C50 /* StoreConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE251C3A17AD00B36C50 /* StoreConnectorTests.swift */; settings = {ASSET_TAGS = (); }; };
 		A963AE2A1C3A17AD00B36C50 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE261C3A17AD00B36C50 /* StoreTests.swift */; settings = {ASSET_TAGS = (); }; };
 		A963AE2B1C3A17AD00B36C50 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE271C3A17AD00B36C50 /* Tests.swift */; settings = {ASSET_TAGS = (); }; };
+		A9A327A81C3B7F5900273622 /* MockDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A327A71C3B7F5900273622 /* MockDispatch.swift */; settings = {ASSET_TAGS = (); }; };
+		A9A327AA1C3B7F7500273622 /* TodoListActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A327A91C3B7F7500273622 /* TodoListActionTests.swift */; settings = {ASSET_TAGS = (); }; };
 		CAF9A96E6EA96CCB741F00E1 /* Pods_Redux_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601CC335698D6610D644D3B5 /* Pods_Redux_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		A963AE251C3A17AD00B36C50 /* StoreConnectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreConnectorTests.swift; sourceTree = "<group>"; };
 		A963AE261C3A17AD00B36C50 /* StoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
 		A963AE271C3A17AD00B36C50 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		A9A327A71C3B7F5900273622 /* MockDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDispatch.swift; sourceTree = "<group>"; };
+		A9A327A91C3B7F7500273622 /* TodoListActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListActionTests.swift; sourceTree = "<group>"; };
 		D743464BE4D190B4D75EBD76 /* Pods-Redux_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redux_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Redux_Tests/Pods-Redux_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9F28E9118CC65A6843AE734 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E596E3907E35DBA6EA4A6C83 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				A963AE261C3A17AD00B36C50 /* StoreTests.swift */,
 				A963AE271C3A17AD00B36C50 /* Tests.swift */,
 				A9057A131C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift */,
+				A9A327A71C3B7F5900273622 /* MockDispatch.swift */,
+				A9A327A91C3B7F7500273622 /* TodoListActionTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -426,8 +432,10 @@
 			files = (
 				A963AE281C3A17AD00B36C50 /* ReducerTests.swift in Sources */,
 				A9057A141C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift in Sources */,
+				A9A327AA1C3B7F7500273622 /* TodoListActionTests.swift in Sources */,
 				A963AE2B1C3A17AD00B36C50 /* Tests.swift in Sources */,
 				A963AE291C3A17AD00B36C50 /* StoreConnectorTests.swift in Sources */,
+				A9A327A81C3B7F5900273622 /* MockDispatch.swift in Sources */,
 				A963AE2A1C3A17AD00B36C50 /* StoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

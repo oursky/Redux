@@ -6,13 +6,20 @@
 [![License](https://img.shields.io/cocoapods/l/Redux.svg?style=flat)](http://cocoapods.org/pods/Redux)
 [![Platform](https://img.shields.io/cocoapods/p/Redux.svg?style=flat)](http://cocoapods.org/pods/Redux)
 
-## Usage
+Redux is a swift implementation of [redux](https://github.com/rackt/redux).
 
-##### [Cocoapods](https://guides.cocoapods.org/)
+A thorough walk through and description of the framework can be found at the official Redux repository: [redux](http://redux.js.org/index.html).
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+## Features
 
-##### [Quick Start](https://github.com/oursky/Redux-Project-Template)
+- Project scaffolding, includes basic redux structure and test cases
+- File templates
+- Static typed State
+- Handy functions for integrating with UIViewController, similar to [react-redux](https://github.com/rackt/react-redux)
+
+## Getting Started
+
+### Quick Start from [Project Template](https://github.com/oursky/Redux-Project-Template)
 
 Start with our project template
 
@@ -20,20 +27,37 @@ Start with our project template
 curl https://raw.githubusercontent.com/oursky/Redux-Project-Template/master/download | bash -s YOUR_PROJECT_NAME
 ```
 
-## Requirements
+### Add to an existing project with [CocoaPods](https://guides.cocoapods.org/)
 
-## Installation
-
-Redux is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
+Add the following in Podfile
 ```ruby
-pod "Redux"
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+pod "Redux", "~> 0.1.0"
 ```
 
-## Author
+Then, run the following command
+```bash
+pod install
+```
 
-Steven-Chan, stevenchan@oursky.com
+## Try Example
+
+```bash
+git clone git@github.com:oursky/Redux.git
+cd Redux
+pod install --project-directory=Example
+open Example/Redux.xcworkspace
+```
+
+Then you may run **Redux-Example** in XCode
+
+## Credit
+
+Inspired from
+- https://github.com/rackt/redux
+- https://github.com/mwise/Redux.swift
 
 ## License
 

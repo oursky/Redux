@@ -8,7 +8,7 @@
 
 import Redux
 
-struct TodoListItem: AnyEquatable, Equatable {
+public struct TodoListItem: AnyEquatable, Equatable {
     var content: String
     var createdAt: NSDate?
 
@@ -40,7 +40,7 @@ struct TodoListItem: AnyEquatable, Equatable {
     }
 }
 
-func == (lhs: TodoListItem, rhs: TodoListItem) -> Bool {
+public func == (lhs: TodoListItem, rhs: TodoListItem) -> Bool {
     return lhs.content == rhs.content &&
         lhs.createdAt === rhs.createdAt &&
         lhs.createdAt!.isEqualToDate(rhs.createdAt!)

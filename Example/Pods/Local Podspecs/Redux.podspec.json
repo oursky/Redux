@@ -1,15 +1,15 @@
 {
   "name": "Redux",
   "version": "0.1.0",
-  "summary": "A short description of Redux.",
-  "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/Redux",
+  "summary": "Swift implementation of Redux.",
+  "description": "A Swift implementation of rackt/redux by Dan Abramov and the React Community.",
+  "homepage": "https://github.com/oursky/Redux",
   "license": "MIT",
   "authors": {
     "Steven-Chan": "stevenchan@oursky.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/Redux.git",
+    "git": "https://github.com/oursky/Redux.git",
     "tag": "0.1.0"
   },
   "platforms": {
