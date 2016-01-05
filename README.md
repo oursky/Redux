@@ -42,6 +42,21 @@ Then, run the following command
 pod install
 ```
 
+## Install Xcode Redux File Templates
+
+Run the following command
+```bash
+# if your XCode path is '/Applications/Xcode.app'
+curl https://raw.githubusercontent.com/oursky/Redux-Project-Template/file-templates/install-template.sh | bash -s
+
+# else
+curl https://raw.githubusercontent.com/oursky/Redux-Project-Template/file-templates/install-template.sh | bash -s YOUR_XCODE_PATH
+```
+
+Then, you may open Xcode, go to `File -> New -> File...`, you should be able to find the file templates under `Redux`
+
+See https://github.com/oursky/Redux-Project-Template/tree/file-templates
+
 ## Try Example
 
 ```bash
