@@ -8,7 +8,17 @@
 
 ## Usage
 
+##### [Cocoapods](https://guides.cocoapods.org/)
+
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+##### [Quick Start](https://github.com/oursky/Redux-Project-Template)
+
+Start with our project template
+
+```bash
+curl https://raw.githubusercontent.com/oursky/Redux-Project-Template/master/download | bash -s YOUR_PROJECT_NAME
+```
 
 ## Requirements
 
