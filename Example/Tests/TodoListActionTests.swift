@@ -3,7 +3,7 @@
 //  Redux
 //
 //  Created by Steven Chan on 5/1/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright (c) 2016 Oursky Limited. All rights reserved.
 //
 
 import XCTest

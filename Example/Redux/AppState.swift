@@ -3,7 +3,7 @@
 //  SwiftRedux
 //
 //  Created by Steven Chan on 31/12/15.
-//  Copyright © 2015 CocoaPods. All rights reserved.
+//  Copyright (c) 2016 Oursky Limited. All rights reserved.
 //
 
 import Redux

@@ -3,7 +3,7 @@
 //  Redux
 //
 //  Created by Steven-Chan on 01/04/2016.
-//  Copyright (c) 2016 Steven-Chan. All rights reserved.
+//  Copyright (c) 2016 Oursky Limited. All rights reserved.
 //
 
 import UIKit
