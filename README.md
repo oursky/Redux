@@ -46,7 +46,7 @@ pod install
 
 Run the following command
 ```bash
-# if your XCode path is '/Applications/Xcode.app'
+# if your Xcode path is '/Applications/Xcode.app'
 curl https://raw.githubusercontent.com/oursky/Redux-Project-Template/file-templates/install-template.sh | bash -s
 
 # else
@@ -66,7 +66,7 @@ pod install --project-directory=Example
 open Example/Redux.xcworkspace
 ```
 
-Then you may run **Redux-Example** in XCode
+Then you may run **Redux-Example** in Xcode
 
 ## Credit
 
