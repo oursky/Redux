@@ -14,7 +14,7 @@ public func createStore(
 ) -> ReduxStore {
     var currentReducer = reducer
     var currentState = initialState
-    var listeners = [Listener]()
+    var listeners = [NSUUID: Listener]()
     var isDispatching = false
 
     func getState() -> ReduxState {
@@ -22,8 +22,8 @@ public func createStore(
     }
 
     func subscribe(listener: Listener) -> () -> Void {
-        listeners.append(listener)
-        let index = listeners.count - 1
+        let uuid = NSUUID()
+        listeners[uuid] = listener
         var isSubscribed = true
 
         func unsubscribe() {
@@ -32,7 +32,7 @@ public func createStore(
             }
 
             isSubscribed = false
-            _ = listeners.removeAtIndex(index)
+            _ = listeners.removeValueForKey(uuid)
         }
         return unsubscribe
     }
@@ -58,7 +58,7 @@ public func createStore(
             currentState = ns
         }
 
-        for listener in listeners {
+        for listener in listeners.values {
             listener()
         }
 
