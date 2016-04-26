@@ -10,8 +10,8 @@ import Foundation
 
 @noreturn public func fatalError(
     @autoclosure message: () -> String = "",
-    file: StaticString = __FILE__,
-    line: UInt = __LINE__
+    file: StaticString = #file,
+    line: UInt = #line
 ) {
     Assertions.fatalErrorClosure(message(), file, line)
     runForever()
