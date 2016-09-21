@@ -9,20 +9,20 @@
 import Foundation
 
 public func createStore(
-    reducer: Reducer,
+    _ reducer: @escaping Reducer,
     initialState: AnyEquatable
 ) -> ReduxStore {
     var currentReducer = reducer
     var currentState = initialState
-    var listeners = [NSUUID: Listener]()
+    var listeners = [UUID: Listener]()
     var isDispatching = false
 
     func getState() -> ReduxState {
         return currentState
     }
 
-    func subscribe(listener: Listener) -> () -> Void {
-        let uuid = NSUUID()
+    func subscribe(_ listener: @escaping Listener) -> () -> Void {
+        let uuid = UUID()
         listeners[uuid] = listener
         var isSubscribed = true
 
@@ -32,12 +32,12 @@ public func createStore(
             }
 
             isSubscribed = false
-            _ = listeners.removeValueForKey(uuid)
+            _ = listeners.removeValue(forKey: uuid)
         }
         return unsubscribe
     }
 
-    func dispatch(action: ReduxAction) -> ReduxAction {
+    func dispatch(_ action: ReduxAction) -> ReduxAction {
         if isDispatching {
             /*
                 Using fatalError you do not need try/catch in every dispatch.
@@ -51,8 +51,8 @@ public func createStore(
 
         isDispatching = true
         let nextState = currentReducer(
-            previousState: currentState,
-            action: action
+            currentState,
+            action
         )
         if let ns = nextState as? AnyEquatable {
             currentState = ns
@@ -65,18 +65,18 @@ public func createStore(
         return action
     }
 
-    func replaceReducer(nextReducer: Reducer) -> Void {
+    func replaceReducer(_ nextReducer: @escaping Reducer) -> Void {
         currentReducer = nextReducer
 
-        dispatch(ReduxAction(payload: ActionTypes.Init))
+        dispatch(ReduxAction(payload: ActionTypes.init as! ReduxActionType))
     }
 
-    dispatch(ReduxAction(payload: ActionTypes.Init))
+    dispatch(ReduxAction(payload: ActionTypes.init as! ReduxActionType))
 
     return ReduxStore(
         dispatch: dispatch,
         getState: getState,
-        replaceReducer: replaceReducer,
-        subscribe: subscribe
+        replaceReducer: replaceReducer as! ((Any, ReduxAction) -> Any) -> Void,
+        subscribe: subscribe as! (() -> Void) -> () -> Void
     )
 }

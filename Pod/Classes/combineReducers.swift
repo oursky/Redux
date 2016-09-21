@@ -8,16 +8,13 @@
 
 import Foundation
 
-public func combineReducers(reducers: [String: Reducer]) -> Reducer {
-    func combination(previousState: Any, action: ReduxAction) -> Any {
+public func combineReducers(_ reducers: [String: Reducer]) -> Reducer {
+    func combination(_ previousState: Any, action: ReduxAction) -> Any {
         if let appState = previousState as? ReduxAppState {
             var nextState: ReduxAppState = appState
             for (key, reducer) in reducers {
                 if let previousStateForKey = nextState.get(key) {
-                    let nextStateForKey = reducer(
-                        previousState: previousStateForKey,
-                        action: action
-                    )
+                    let nextStateForKey = reducer(previousStateForKey, action)
                     if let ns = nextStateForKey as? AnyEquatable {
                         nextState.set(key, value: ns)
                     } else {

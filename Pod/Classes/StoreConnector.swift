@@ -10,17 +10,17 @@ import UIKit
 
 public protocol StoreDelegate {
 
-    func storeDidUpdateState(lastState: ReduxAppState)
+    func storeDidUpdateState(_ lastState: ReduxAppState)
 
 }
 
-public class StoreConnector {
+open class StoreConnector {
     typealias Disconnect = () -> Void
 
     var connections: [Int: Disconnect] = [Int: Disconnect]()
 
-    func connect(store: ReduxStore, keys: [String], delegate: StoreDelegate) {
-        let address: Int = unsafeBitCast(store, Int.self)
+    func connect(_ store: ReduxStore, keys: [String], delegate: StoreDelegate) {
+        let address: Int = unsafeBitCast(store, to: Int.self)
 
         var lastState: ReduxAppState?
         if let storeState = store.getState() as? ReduxAppState {
@@ -47,15 +47,15 @@ public class StoreConnector {
         }
     }
 
-    func disconnect(store: ReduxStore) {
-        let address: Int = unsafeBitCast(store, Int.self)
+    func disconnect(_ store: ReduxStore) {
+        let address: Int = unsafeBitCast(store, to: Int.self)
         connections[address]!()
-        connections.removeValueForKey(address)
+        connections.removeValue(forKey: address)
     }
 }
 
 public extension UIViewController {
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var connector: StoreConnector?
     }
 
@@ -78,7 +78,7 @@ public extension UIViewController {
         }
     }
 
-    func connect(store: ReduxStore, keys: [String], delegate: StoreDelegate) {
+    func connect(_ store: ReduxStore, keys: [String], delegate: StoreDelegate) {
         if storeConnector == nil {
             storeConnector = StoreConnector()
         }
@@ -86,7 +86,7 @@ public extension UIViewController {
         storeConnector?.connect(store, keys: keys, delegate: delegate)
     }
 
-    func disconnect(store: ReduxStore) {
+    func disconnect(_ store: ReduxStore) {
         storeConnector?.disconnect(store)
     }
 }
