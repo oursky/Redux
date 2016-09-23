@@ -11,31 +11,31 @@ import Redux
 let kTodoListUserDefaultsKey = "SwiftRedux.example.TodoList"
 
 public enum TodoListAction: ReduxActionType {
-    case Load
-    case LoadSuccess(list: [TodoListItem])
-    case LoadFail
+    case load
+    case loadSuccess(list: [TodoListItem])
+    case loadFail
 
-    case Add(token: String, content: String)
-    case AddSuccess(token: String, createdAt: NSDate)
-    case AddFail(token: String)
+    case add(token: String, content: String)
+    case addSuccess(token: String, createdAt: NSDate)
+    case addFail(token: String)
 }
 
 
 public struct TodoListActionCreators {
 
     static func load(
-        dispatch: DispatchFunction,
-        userDefaults: NSUserDefaults
+        _ dispatch: @escaping DispatchFunction,
+        userDefaults: UserDefaults
     ) {
         dispatch(
-            action: ReduxAction(payload: TodoListAction.Load)
+            ReduxAction(payload: TodoListAction.load)
         )
 
         let list = userDefaults
-            .arrayForKey(kTodoListUserDefaultsKey) ?? [AnyObject]()
+            .array(forKey: kTodoListUserDefaultsKey) ?? [Any]()
 
         let itemList = list.map {
-            (item: AnyObject) in
+            (item: Any) in
             TodoListItem(dict: (item as! [String: AnyObject]))
         }
 
@@ -43,22 +43,22 @@ public struct TodoListActionCreators {
         // need some time to load
         delay(1.0) {
             dispatch(
-                action: ReduxAction(
-                    payload: TodoListAction.LoadSuccess(list: itemList)
+                ReduxAction(
+                    payload: TodoListAction.loadSuccess(list: itemList)
                 )
             )
         }
     }
 
     static func add(
-        content: String,
+        _ content: String,
         dispatch: DispatchFunction,
-        userDefaults: NSUserDefaults
+        userDefaults: UserDefaults
     ) {
-        let token = NSUUID().UUIDString
+        let token = NSUUID().uuidString
         dispatch(
-            action: ReduxAction(
-                payload: TodoListAction.Add(token: token, content: content)
+            ReduxAction(
+                payload: TodoListAction.add(token: token, content: content)
             )
         )
 
@@ -66,16 +66,16 @@ public struct TodoListActionCreators {
         let newItem = TodoListItem(content: content, createdAt: createdAt)
 
         var list = userDefaults
-            .arrayForKey(kTodoListUserDefaultsKey) ?? [AnyObject]()
+            .array(forKey: kTodoListUserDefaultsKey) ?? [AnyObject]()
 
         list.append(newItem.toDict())
 
-        userDefaults.setObject(list, forKey: kTodoListUserDefaultsKey)
+        userDefaults.set(list, forKey: kTodoListUserDefaultsKey)
         userDefaults.synchronize()
 
         dispatch(
-            action: ReduxAction(
-                payload: TodoListAction.AddSuccess(
+            ReduxAction(
+                payload: TodoListAction.addSuccess(
                     token: token,
                     createdAt: createdAt
                 )
@@ -87,13 +87,8 @@ public struct TodoListActionCreators {
 
 
 // delay helper
-func delay(delay: Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(),
-        closure
-    )
+func delay(_ delay: Double, closure:@escaping ()->()) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+        closure()
+    }
 }

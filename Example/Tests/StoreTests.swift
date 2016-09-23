@@ -29,8 +29,8 @@ class StoreTests: XCTestCase {
     }
 
     func testDispatch() {
-        store?.dispatch(action: ReduxAction(payload: CounterAction.Increment))
-        store?.dispatch(action: ReduxAction(payload: ListAction.Append("hi")))
+        store?.dispatch(ReduxAction(payload: CounterAction.increment))
+        store?.dispatch(ReduxAction(payload: ListAction.append("hi")))
 
         XCTAssert(store?.getCountState()!.count == 1)
         XCTAssert((store?.getListState()!.list)! == [ "hi" ])
@@ -40,15 +40,15 @@ class StoreTests: XCTestCase {
     func testDispatchWithinDispatch() {
         expectFatalError {
             self.store?.dispatch(
-                action: ReduxAction(
-                    payload: CounterAction.DispatchWithinDispatch(self.store!)
+                ReduxAction(
+                    payload: CounterAction.dispatchWithinDispatch(self.store!)
                 )
             )
         }
     }
 
     func testSubcribe() {
-        let expectation = self.expectationWithDescription("subscribed action")
+        let expectation = self.expectation(description: "subscribed action")
 
         var result: [[String]] = [[String]]()
 
@@ -56,27 +56,28 @@ class StoreTests: XCTestCase {
             result.append((store?.getListState()!.list)!)
 
             if result.count == 2 {
-                XCTAssert(result == [ [ "Now" ], [ "Now", "You see me" ] ])
+                XCTAssert(result[0] == [ "Now" ])
+                XCTAssert(result[1] == [ "Now", "You see me" ])
                 expectation.fulfill()
             }
         }
 
-        let unsubscribe = store?.subscribe(listener: render)
+        let unsubscribe = store?.subscribe(render)
 
         store?.dispatch(
-            action: ReduxAction(payload: ListAction.Append("Now"))
+            ReduxAction(payload: ListAction.append("Now"))
         )
         store?.dispatch(
-            action: ReduxAction(payload: ListAction.Append("You see me"))
+            ReduxAction(payload: ListAction.append("You see me"))
         )
 
         unsubscribe!()
 
         store?.dispatch(
-            action: ReduxAction(payload: ListAction.Append("Now you don't"))
+            ReduxAction(payload: ListAction.append("Now you don't"))
         )
 
-        self.waitForExpectationsWithTimeout(0.5) { (error) -> Void in
+        self.waitForExpectations(timeout: 0.5) { (error) -> Void in
             XCTAssert(result.count == 2)
         }
     }

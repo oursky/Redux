@@ -11,8 +11,8 @@ import Redux
 
 class TodoListActionTests: XCTestCase {
 
-    let mockUserDefaults: NSUserDefaults =
-        NSUserDefaults(suiteName: "TodoListActionTests")!
+    let mockUserDefaults: UserDefaults =
+        UserDefaults(suiteName: "TodoListActionTests")!
     let mockDispatch: MockDispatch = createMockDispatch()
 
     override func setUp() {
@@ -24,7 +24,7 @@ class TodoListActionTests: XCTestCase {
 
         let dict = mockUserDefaults.dictionaryRepresentation()
         for (k, _) in dict {
-            mockUserDefaults.removeObjectForKey(k)
+            mockUserDefaults.removeObject(forKey: k)
         }
         mockDispatch.cleanup()
     }

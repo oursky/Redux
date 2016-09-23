@@ -27,22 +27,22 @@ class MockViewController: UIViewController, StoreDelegate {
         Swift.fatalError("init(coder:) has not been implemented")
     }
 
-    func connectRedux(store: ReduxStore, keys: [String]) {
+    func connectRedux(_ store: ReduxStore, keys: [String]) {
         connect(store, keys: keys, delegate: self)
     }
 
-    func disconnectRedux(store: ReduxStore) {
+    func disconnectRedux(_ store: ReduxStore) {
         disconnect(store)
     }
 
-    func storeDidUpdateState(lastState: ReduxAppState) {
+    func storeDidUpdateState(_ lastState: ReduxAppState) {
         let lastCountState = lastState.get("count") as! CounterState
 
         countLabelText = store.getCountState()!.count
         listData = store.getListState()!.list
 
         if lastCountState.count != store.getCountState()!.count {
-            countChangeCount++
+            countChangeCount += 1
         }
     }
 
@@ -68,9 +68,9 @@ class StoreConnectorTests: XCTestCase {
     func testPositivePartialConnect() {
         viewController?.connectRedux(store!, keys: [ "count" ])
 
-        store?.dispatch(action: ReduxAction(payload: CounterAction.Increment))
-        store?.dispatch(action: ReduxAction(payload: CounterAction.Decrement))
-        store?.dispatch(action: ReduxAction(payload: CounterAction.Increment))
+        store?.dispatch(ReduxAction(payload: CounterAction.increment))
+        store?.dispatch(ReduxAction(payload: CounterAction.decrement))
+        store?.dispatch(ReduxAction(payload: CounterAction.increment))
 
         XCTAssert(viewController?.countLabelText == 1)
         XCTAssert(viewController?.countChangeCount == 3)
@@ -80,8 +80,8 @@ class StoreConnectorTests: XCTestCase {
     func testNegativePartialConnect() {
         viewController?.connectRedux(store!, keys: [ "count" ])
 
-        store?.dispatch(action: ReduxAction(payload: ListAction.Append("hi")))
-        store?.dispatch(action: ReduxAction(payload: ListAction.Append("wah")))
+        store?.dispatch(ReduxAction(payload: ListAction.append("hi")))
+        store?.dispatch(ReduxAction(payload: ListAction.append("wah")))
 
         XCTAssert(viewController?.countLabelText == 0)
         XCTAssert(viewController?.countChangeCount == 0)
@@ -91,8 +91,8 @@ class StoreConnectorTests: XCTestCase {
     func testAnotherNegativePartialConnect() {
         viewController?.connectRedux(store!, keys: [ "list" ])
 
-        store?.dispatch(action: ReduxAction(payload: ListAction.Append("wah")))
-        store?.dispatch(action: ReduxAction(payload: CounterAction.Increment))
+        store?.dispatch(ReduxAction(payload: ListAction.append("wah")))
+        store?.dispatch(ReduxAction(payload: CounterAction.increment))
 
         XCTAssert(viewController?.countLabelText == 0)
         XCTAssert(viewController?.countChangeCount == 0)
@@ -102,8 +102,8 @@ class StoreConnectorTests: XCTestCase {
     func testCombineConnect() {
         viewController?.connectRedux(store!, keys: [ "list", "count" ])
 
-        store?.dispatch(action: ReduxAction(payload: ListAction.Append("wah")))
-        store?.dispatch(action: ReduxAction(payload: CounterAction.Increment))
+        store?.dispatch(ReduxAction(payload: ListAction.append("wah")))
+        store?.dispatch(ReduxAction(payload: CounterAction.increment))
 
         XCTAssert(viewController?.countLabelText == 1)
         XCTAssert(viewController?.countChangeCount == 1)
@@ -114,8 +114,8 @@ class StoreConnectorTests: XCTestCase {
 
         viewController?.connectRedux(store!, keys: [ "list", "count" ])
 
-        store?.dispatch(action: ReduxAction(payload: ListAction.Append("wah")))
-        store?.dispatch(action: ReduxAction(payload: CounterAction.Increment))
+        store?.dispatch(ReduxAction(payload: ListAction.append("wah")))
+        store?.dispatch(ReduxAction(payload: CounterAction.increment))
 
         XCTAssert(viewController?.countLabelText == 1)
         XCTAssert(viewController?.countChangeCount == 1)
@@ -123,8 +123,8 @@ class StoreConnectorTests: XCTestCase {
 
         viewController?.disconnect(store!)
 
-        store?.dispatch(action: ReduxAction(payload: ListAction.Append("wah")))
-        store?.dispatch(action: ReduxAction(payload: CounterAction.Increment))
+        store?.dispatch(ReduxAction(payload: ListAction.append("wah")))
+        store?.dispatch(ReduxAction(payload: CounterAction.increment))
 
         XCTAssert(viewController?.countLabelText == 1)
         XCTAssert(viewController?.countChangeCount == 1)

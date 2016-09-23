@@ -18,35 +18,35 @@ func == (lhs: TodoListState, rhs: TodoListState) -> Bool {
 }
 
 
-func todoListReducer(previousState: Any, action: ReduxAction) -> Any {
+func todoListReducer(_ previousState: Any, action: ReduxAction) -> Any {
     var state = previousState as! TodoListState
 
     print("action: ", action)
 
     switch action.payload {
-    case TodoListAction.LoadSuccess(let list):
+    case TodoListAction.loadSuccess(let list):
         state.list = list
         break
 
-    case TodoListAction.Add(let token, let content):
+    case TodoListAction.add(let token, let content):
         state.list.append(
             TodoListItem(
                 content: content,
-                token: token
+                token: token as NSString
             )
         )
         break
-    case TodoListAction.AddSuccess(let token, let createdAt):
+    case TodoListAction.addSuccess(let token, let createdAt):
         state.list = state.list.map {
             item in
-            item.token == token ?
+            item.token as String == token ?
                 TodoListItem(content: item.content, createdAt: createdAt) :
             item
         }
         break
-    case TodoListAction.AddFail(let token):
+    case TodoListAction.addFail(let token):
         state.list = state.list.filter {
-            item in item.token != token
+            item in item.token as String != token
         }
         break
 

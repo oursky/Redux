@@ -15,9 +15,9 @@ class MockDispatch {
     let cleanup: () -> ()
 
     init(
-        dispatch: DispatchFunction,
-        getDispatchedActions: () -> [ReduxAction],
-        cleanup: () -> ()
+        dispatch: @escaping DispatchFunction,
+        getDispatchedActions: @escaping () -> [ReduxAction],
+        cleanup: @escaping () -> ()
     ) {
         self.dispatch = dispatch
         self.cleanup = cleanup
@@ -34,7 +34,7 @@ func createMockDispatch() -> MockDispatch {
         return dispatchedActions
     }
 
-    func dispatch(action: ReduxAction) -> ReduxAction {
+    func dispatch(_ action: ReduxAction) -> ReduxAction {
         dispatchedActions.append(action)
         return action
     }

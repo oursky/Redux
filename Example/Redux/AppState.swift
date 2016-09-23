@@ -13,14 +13,14 @@ let kAppStateKeyTodoList = "todoList"
 struct AppState: ReduxAppState, AnyEquatable, Equatable {
     var todoList: TodoListState
 
-    func get(key: String) -> AnyEquatable? {
+    func get(_ key: String) -> AnyEquatable? {
         switch key {
         case kAppStateKeyTodoList: return self.todoList
         default: return nil
         }
     }
 
-    mutating func set(key: String, value: AnyEquatable) {
+    mutating func set(_ key: String, value: AnyEquatable) {
         switch key {
         case kAppStateKeyTodoList:
             self.todoList = value as! TodoListState

@@ -38,7 +38,7 @@ public func createStore(
     }
 
     
-    @discardableResult func dispatch(_ action: ReduxAction) -> ReduxAction {
+    func dispatch(_ action: ReduxAction) -> ReduxAction {
         if isDispatching {
             /*
                 Using fatalError you do not need try/catch in every dispatch.
@@ -77,7 +77,7 @@ public func createStore(
     return ReduxStore(
         dispatch: dispatch,
         getState: getState,
-        replaceReducer: replaceReducer as! ((Any, ReduxAction) -> Any) -> Void,
-        subscribe: subscribe as! (() -> Void) -> () -> Void
+        replaceReducer: replaceReducer,
+        subscribe: subscribe
     )
 }

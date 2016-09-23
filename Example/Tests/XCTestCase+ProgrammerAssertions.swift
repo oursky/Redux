@@ -24,10 +24,10 @@ public extension XCTestCase {
     - parameter testCase:        The test case to be executed that expected to fire the assertion method.
     */
     public func expectFatalError(
-        expectedMessage: String? = nil,
-        file: StaticString = __FILE__,
-        line: UInt = __LINE__,
-        testCase: () -> Void) {
+        _ expectedMessage: String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line,
+        testCase: @escaping () -> Void) {
 
             expectAssertionNoReturnFunction("fatalError", file: file, line: line, function: { (caller) -> () in
 
@@ -41,28 +41,30 @@ public extension XCTestCase {
     }
 
     // MARK:- Private Methods
-    private func expectAssertionNoReturnFunction(
-        functionName: String,
+    fileprivate func expectAssertionNoReturnFunction(
+        _ functionName: String,
         file: StaticString,
         line: UInt,
-        function: (caller: (String) -> Void) -> Void,
+        function: (_ caller: @escaping (String) -> Never) -> Void,
         expectedMessage: String? = nil,
-        testCase: () -> Void,
-        cleanUp: () -> ()
+        testCase: @escaping () -> Void,
+        cleanUp: @escaping () -> ()
         ) {
 
-            let expectation = expectationWithDescription(functionName + "-Expectation")
+            let expectation = self.expectation(description: functionName + "-Expectation")
             var assertionMessage: String? = nil
 
-            function { (message) -> Void in
+            function { (message) -> Never in
                 assertionMessage = message
                 expectation.fulfill()
+                sleep(3600*5)
+                Swift.fatalError(message)
             }
 
             // act, perform on separate thead because a call to function runs forever
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), testCase)
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async(execute: testCase)
 
-            waitForExpectationsWithTimeout(noReturnFailureWaitTime) { _ in
+            waitForExpectations(timeout: noReturnFailureWaitTime) { _ in
 
                 defer {
                     // clean up
@@ -70,13 +72,13 @@ public extension XCTestCase {
                 }
 
                 guard let assertionMessage = assertionMessage else {
-                    XCTFail(functionName + " is expected to be called.", file: file.stringValue, line: line)
+                    XCTFail(functionName + " is expected to be called.", file: file, line: line)
                     return
                 }
 
                 if let expectedMessage = expectedMessage {
                     // assert only if not nil
-                    XCTAssertEqual(assertionMessage, expectedMessage, functionName + " called with incorrect message.", file: file.stringValue, line: line)
+                    XCTAssertEqual(assertionMessage, expectedMessage, functionName + " called with incorrect message.", file: file, line: line)
                 }
             }
     }

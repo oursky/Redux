@@ -34,7 +34,7 @@ public struct TodoListItem: AnyEquatable, Equatable {
 
     func toDict() -> [String: AnyObject] {
         return [
-            "content": content,
+            "content": content as AnyObject,
             "createdAt": createdAt!
         ]
     }
@@ -43,5 +43,5 @@ public struct TodoListItem: AnyEquatable, Equatable {
 public func == (lhs: TodoListItem, rhs: TodoListItem) -> Bool {
     return lhs.content == rhs.content &&
         lhs.createdAt === rhs.createdAt &&
-        lhs.createdAt!.isEqualToDate(rhs.createdAt!)
+        lhs.createdAt!.isEqual(to: rhs.createdAt! as Date)
 }

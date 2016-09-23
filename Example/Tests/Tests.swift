@@ -8,9 +8,9 @@ Mock Counter
 
 **/
 enum CounterAction: ReduxActionType {
-    case Decrement
-    case Increment
-    case DispatchWithinDispatch(ReduxStore)
+    case decrement
+    case increment
+    case dispatchWithinDispatch(ReduxStore)
 }
 
 
@@ -23,17 +23,17 @@ func == (lhs: CounterState, rhs: CounterState) -> Bool {
 }
 
 
-func counterReducer(previousState: Any, action: ReduxAction) -> Any {
+func counterReducer(_ previousState: Any, action: ReduxAction) -> Any {
     var counterState = previousState as! CounterState
     switch action.payload {
-    case CounterAction.Increment:
+    case CounterAction.increment:
         counterState.count = counterState.count + 1
         break
-    case CounterAction.Decrement:
+    case CounterAction.decrement:
         counterState.count = counterState.count - 1
         break
-    case CounterAction.DispatchWithinDispatch(let store):
-        store.dispatch(action: ReduxAction(payload: CounterAction.Increment))
+    case CounterAction.dispatchWithinDispatch(let store):
+        store.dispatch(ReduxAction(payload: CounterAction.increment))
         break
     default:
         break
@@ -49,8 +49,8 @@ Mock List
 
 **/
 enum ListAction: ReduxActionType {
-    case Append(String)
-    case Remove
+    case append(String)
+    case remove
 }
 
 
@@ -63,13 +63,13 @@ func == (lhs: ListState, rhs: ListState) -> Bool {
 }
 
 
-func listReducer(previousState: Any, action: ReduxAction) -> Any {
+func listReducer(_ previousState: Any, action: ReduxAction) -> Any {
     var listState = previousState as! ListState
     switch action.payload {
-    case ListAction.Append(let str):
+    case ListAction.append(let str):
         listState.list.append(str)
         break
-    case ListAction.Remove:
+    case ListAction.remove:
         listState.list.removeLast()
         break
     default:
@@ -89,7 +89,7 @@ struct CombineState: ReduxAppState, AnyEquatable, Equatable {
     var count: CounterState
     var list: ListState
 
-    func get(key: String) -> AnyEquatable? {
+    func get(_ key: String) -> AnyEquatable? {
         switch key {
         case "count": return self.count
         case "list": return self.list
@@ -97,7 +97,7 @@ struct CombineState: ReduxAppState, AnyEquatable, Equatable {
         }
     }
 
-    mutating func set(key: String, value: AnyEquatable) {
+    mutating func set(_ key: String, value: AnyEquatable) {
         switch key {
         case "count":
             self.count = value as! CounterState

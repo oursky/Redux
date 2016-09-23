@@ -29,15 +29,15 @@ class ReducerTests: XCTestCase {
         var nextState: Any = counterInitialState!
         nextState = counterReducer(
             nextState,
-            action: ReduxAction(payload: CounterAction.Increment)
+            action: ReduxAction(payload: CounterAction.increment)
         )
         nextState = counterReducer(
             nextState,
-            action: ReduxAction(payload: CounterAction.Decrement)
+            action: ReduxAction(payload: CounterAction.decrement)
         )
         nextState = counterReducer(
             nextState,
-            action: ReduxAction(payload: CounterAction.Increment)
+            action: ReduxAction(payload: CounterAction.increment)
         )
 
         let counterState: CounterState = nextState as! CounterState
@@ -64,8 +64,8 @@ class ReducerTests: XCTestCase {
         var nextState: Any = initialState
 
         nextState = reducer(
-            previousState: nextState,
-            action: ReduxAction(payload: CounterAction.Increment)
+            nextState,
+            ReduxAction(payload: CounterAction.increment)
         )
 
         var counterState: CounterState =
@@ -77,16 +77,16 @@ class ReducerTests: XCTestCase {
         XCTAssert(listState.list == [String]())
 
         nextState = reducer(
-            previousState: nextState,
-            action: ReduxAction(payload: CounterAction.Decrement)
+            nextState,
+            ReduxAction(payload: CounterAction.decrement)
         )
         nextState = reducer(
-            previousState: nextState,
-            action: ReduxAction(payload: ListAction.Append("Hi"))
+            nextState,
+            ReduxAction(payload: ListAction.append("Hi"))
         )
         nextState = reducer(
-            previousState: nextState,
-            action: ReduxAction(payload: ListAction.Append("Bye"))
+            nextState,
+            ReduxAction(payload: ListAction.append("Bye"))
         )
 
         counterState =
@@ -101,12 +101,12 @@ class ReducerTests: XCTestCase {
         XCTAssert(listState.list != [ "Hi", "Bye", "Oh what?" ])
 
         nextState = reducer(
-            previousState: nextState,
-            action: ReduxAction(payload: ListAction.Remove)
+            nextState,
+            ReduxAction(payload: ListAction.remove)
         )
         nextState = reducer(
-            previousState: nextState,
-            action: ReduxAction(payload: ListAction.Remove)
+            nextState,
+            ReduxAction(payload: ListAction.remove)
         )
 
         counterState =

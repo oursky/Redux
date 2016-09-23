@@ -14,7 +14,7 @@ class ViewController: UIViewController, StoreDelegate {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
 
-    let dateFormatter = NSDateFormatter()
+    let dateFormatter = DateFormatter()
 
     var todoListData: [TodoListItem] = [TodoListItem]() {
         didSet {
@@ -25,11 +25,11 @@ class ViewController: UIViewController, StoreDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        dateFormatter.timeStyle = .MediumStyle
+        dateFormatter.dateStyle = DateFormatter.Style.long
+        dateFormatter.timeStyle = .medium
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.connect(
             Store.appStore,
@@ -39,11 +39,11 @@ class ViewController: UIViewController, StoreDelegate {
 
         TodoListActionCreators.load(
             Store.appStore.dispatch,
-            userDefaults: NSUserDefaults.standardUserDefaults()
+            userDefaults: UserDefaults.standard
         )
     }
 
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.disconnect(Store.appStore)
     }
@@ -53,16 +53,16 @@ class ViewController: UIViewController, StoreDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func enterDidPress(sender: UIButton) {
+    @IBAction func enterDidPress(_ sender: UIButton) {
         TodoListActionCreators.add(
             textField.text!,
             dispatch: Store.appStore.dispatch,
-            userDefaults: NSUserDefaults.standardUserDefaults()
+            userDefaults: UserDefaults.standard
         )
         textField.text = ""
     }
 
-    func storeDidUpdateState(lastState: ReduxAppState) {
+    func storeDidUpdateState(_ lastState: ReduxAppState) {
         let lastTodoListState =
             lastState.get(kAppStateKeyTodoList) as! TodoListState
 
@@ -76,26 +76,26 @@ class ViewController: UIViewController, StoreDelegate {
 extension ViewController: UITableViewDataSource {
 
     internal func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
         return self.todoListData.count
     }
 
     internal func tableView(
-        tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = UITableViewCell(
-            style: UITableViewCellStyle.Subtitle,
+            style: UITableViewCellStyle.subtitle,
             reuseIdentifier: "TodoListItem.cell"
         )
 
-        let item: TodoListItem? = self.todoListData[indexPath.row]
+        let item: TodoListItem? = self.todoListData[(indexPath as NSIndexPath).row]
 
         cell.textLabel?.text = item!.content
         cell.detailTextLabel?.text =
-            dateFormatter.stringFromDate(item!.createdAt!)
+            dateFormatter.string(from: item!.createdAt! as Date)
 
         return cell
     }
