@@ -11,7 +11,7 @@ import Foundation
 public typealias ActionCreator = (_ args: Any...) -> ReduxAction
 public typealias ActionType = String
 public typealias ReduxAppState = KeyValueEqutable
-public typealias DispatchFunction = (_ action: ReduxAction) -> ReduxAction
+public typealias DispatchFunction = (_ action: ReduxAction) -> Void
 public typealias FunctionWithArgs = (_ args: Any...) -> Void
 public typealias Listener = () -> Void
 public typealias Reducer = (_ previousState: Any, _ action: ReduxAction) -> Any

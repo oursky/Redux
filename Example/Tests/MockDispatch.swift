@@ -34,9 +34,8 @@ func createMockDispatch() -> MockDispatch {
         return dispatchedActions
     }
 
-    func dispatch(_ action: ReduxAction) -> ReduxAction {
+    func dispatch(_ action: ReduxAction) {
         dispatchedActions.append(action)
-        return action
     }
 
     func cleanup() {
