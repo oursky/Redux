@@ -25,8 +25,8 @@ public extension XCTestCase {
     */
     public func expectFatalError(
         expectedMessage: String? = nil,
-        file: StaticString = __FILE__,
-        line: UInt = __LINE__,
+        file: StaticString = #file,
+        line: UInt = #line,
         testCase: () -> Void) {
 
             expectAssertionNoReturnFunction("fatalError", file: file, line: line, function: { (caller) -> () in
@@ -70,13 +70,13 @@ public extension XCTestCase {
                 }
 
                 guard let assertionMessage = assertionMessage else {
-                    XCTFail(functionName + " is expected to be called.", file: file.stringValue, line: line)
+                    XCTFail(functionName + " is expected to be called.", file: file, line: line)
                     return
                 }
 
                 if let expectedMessage = expectedMessage {
                     // assert only if not nil
-                    XCTAssertEqual(assertionMessage, expectedMessage, functionName + " called with incorrect message.", file: file.stringValue, line: line)
+                    XCTAssertEqual(assertionMessage, expectedMessage, functionName + " called with incorrect message.", file: file, line: line)
                 }
             }
     }

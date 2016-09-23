@@ -13,18 +13,18 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		958B2F784743EA04424A1AD8 /* Pods_Redux_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C80791CFDA5A86CADDD676 /* Pods_Redux_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		A9057A141C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9057A131C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE1C1C3A169000B36C50 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE171C3A169000B36C50 /* AppState.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE1D1C3A169000B36C50 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE181C3A169000B36C50 /* Store.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE1E1C3A169000B36C50 /* TodoListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE191C3A169000B36C50 /* TodoListAction.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE1F1C3A169000B36C50 /* TodoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE1A1C3A169000B36C50 /* TodoListItem.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE201C3A169000B36C50 /* TodoListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE1B1C3A169000B36C50 /* TodoListReducer.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE281C3A17AD00B36C50 /* ReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE241C3A17AD00B36C50 /* ReducerTests.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE291C3A17AD00B36C50 /* StoreConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE251C3A17AD00B36C50 /* StoreConnectorTests.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE2A1C3A17AD00B36C50 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE261C3A17AD00B36C50 /* StoreTests.swift */; settings = {ASSET_TAGS = (); }; };
-		A963AE2B1C3A17AD00B36C50 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE271C3A17AD00B36C50 /* Tests.swift */; settings = {ASSET_TAGS = (); }; };
-		A9A327A81C3B7F5900273622 /* MockDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A327A71C3B7F5900273622 /* MockDispatch.swift */; settings = {ASSET_TAGS = (); }; };
-		A9A327AA1C3B7F7500273622 /* TodoListActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A327A91C3B7F7500273622 /* TodoListActionTests.swift */; settings = {ASSET_TAGS = (); }; };
+		A9057A141C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9057A131C3A5D9E00117DC8 /* XCTestCase+ProgrammerAssertions.swift */; };
+		A963AE1C1C3A169000B36C50 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE171C3A169000B36C50 /* AppState.swift */; };
+		A963AE1D1C3A169000B36C50 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE181C3A169000B36C50 /* Store.swift */; };
+		A963AE1E1C3A169000B36C50 /* TodoListAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE191C3A169000B36C50 /* TodoListAction.swift */; };
+		A963AE1F1C3A169000B36C50 /* TodoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE1A1C3A169000B36C50 /* TodoListItem.swift */; };
+		A963AE201C3A169000B36C50 /* TodoListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE1B1C3A169000B36C50 /* TodoListReducer.swift */; };
+		A963AE281C3A17AD00B36C50 /* ReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE241C3A17AD00B36C50 /* ReducerTests.swift */; };
+		A963AE291C3A17AD00B36C50 /* StoreConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE251C3A17AD00B36C50 /* StoreConnectorTests.swift */; };
+		A963AE2A1C3A17AD00B36C50 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE261C3A17AD00B36C50 /* StoreTests.swift */; };
+		A963AE2B1C3A17AD00B36C50 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963AE271C3A17AD00B36C50 /* Tests.swift */; };
+		A9A327A81C3B7F5900273622 /* MockDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A327A71C3B7F5900273622 /* MockDispatch.swift */; };
+		A9A327AA1C3B7F7500273622 /* TodoListActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A327A91C3B7F7500273622 /* TodoListActionTests.swift */; };
 		CAF9A96E6EA96CCB741F00E1 /* Pods_Redux_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601CC335698D6610D644D3B5 /* Pods_Redux_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -584,10 +584,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -607,10 +603,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";

@@ -42,7 +42,7 @@ class MockViewController: UIViewController, StoreDelegate {
         listData = store.getListState()!.list
 
         if lastCountState.count != store.getCountState()!.count {
-            countChangeCount++
+            countChangeCount += 1
         }
     }
 
