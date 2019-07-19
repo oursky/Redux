@@ -31,3 +31,12 @@ Carthage
 # `pod install` in .travis.yml
 #
 # Pods/
+
+*.pem
+*.cer
+*.cert
+*.p12
+*.pfx
+*.key
+.env
+docker-compose.override.yml
