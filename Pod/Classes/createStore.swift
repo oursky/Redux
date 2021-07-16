@@ -67,10 +67,10 @@ public func createStore(
     func replaceReducer(_ nextReducer: @escaping Reducer) -> Void {
         currentReducer = nextReducer
 
-        dispatch(ReduxAction(payload: ActionTypes.init as! ReduxActionType))
+        dispatch(ReduxAction(payload: ActionTypes.`init`))
     }
 
-    dispatch(ReduxAction(payload: ActionTypes.init as! ReduxActionType))
+    dispatch(ReduxAction(payload: ActionTypes.`init`))
 
     return ReduxStore(
         dispatch: dispatch,

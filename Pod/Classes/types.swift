@@ -51,10 +51,10 @@ public struct ReduxAction {
 }
 
 open class ReduxStore {
-    open let dispatch: DispatchFunction
-    open let getState: () -> ReduxState
-    open let replaceReducer: (_ nextReducer: @escaping Reducer) -> Void
-    open let subscribe: (_ listener: @escaping Listener) -> () -> Void
+    public let dispatch: DispatchFunction
+    public let getState: () -> ReduxState
+    public let replaceReducer: (_ nextReducer: @escaping Reducer) -> Void
+    public let subscribe: (_ listener: @escaping Listener) -> () -> Void
 
     public init(
         dispatch: @escaping DispatchFunction,

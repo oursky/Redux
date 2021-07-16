@@ -21,18 +21,10 @@ A Swift implementation of rackt/redux by Dan Abramov and the React Community.
                        DESC
 
   s.homepage         = "https://github.com/oursky/Redux"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
+  s.license          = { :type => "MIT", :file => "LICENSE" }
   s.author           = { "Steven-Chan" => "stevenchan@oursky.com" }
   s.source           = { :git => "https://github.com/oursky/Redux.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.platform     = :ios, '8.0'
-  s.requires_arc = true
-
+  s.ios.deployment_target = "9.0"
   s.source_files = 'Pod/Classes/**/*'
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.swift_versions = ['5.0', '5.1', '5.2']
 end
